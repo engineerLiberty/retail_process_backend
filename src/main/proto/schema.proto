@@ -1,0 +1,111 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.grpcretails.grpcretailprocess";
+
+
+service LoginAndRegistrationService {
+  rpc Register(RegistrationRequest) returns (Response);
+  rpc Login(LoginRequest) returns (Response);
+}
+message RegistrationRequest {
+  string firstname = 1;
+  string lastname = 2;
+  string email = 3;
+  string password = 4;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message Response {
+  string reply = 1;
+}
+
+message Item {
+  string name = 1;
+  double price = 2;
+  int32 stock_quantity = 3;
+}
+
+message CartItem {
+  Item item = 1;
+  int32 quantity = 2;
+  double discount = 3;
+}
+
+message Cart {
+  repeated CartItem items = 1;
+  double total_selling_amount = 2;
+  double total_discount_amount = 3;
+}
+
+message GetItemsRequest {}
+
+message GetItemsResponse {
+  repeated Item items = 1;
+}
+
+message AddToCartRequest {
+  int64 item_id = 1;
+  int32 quantity = 2;
+}
+
+message AddToCartResponse {}
+
+message RemoveFromCartRequest {
+  int64 item_id = 1;
+  int32 quantity = 2;
+}
+
+message RemoveFromCartResponse {}
+
+message UpdateCartRequest {
+  map<int64, int32> item_quantities = 1;
+}
+
+message UpdateCartResponse {}
+
+message GetCartRequest {}
+
+message GetCartResponse {
+  Cart cart = 1;
+}
+
+message CheckoutRequest {}
+
+message CheckoutResponse {}
+
+message ReorderRequest {
+  int64 order_id = 1;
+}
+
+message ReorderResponse {}
+
+message CancelOrderRequest {
+  int64 order_id = 1;
+  string reason = 2;
+}
+
+
+message ViewCartRequest {}
+
+message ViewCartResponse {
+  Cart cart = 1;
+}
+
+
+message CancelOrderResponse {}
+
+service InventoryService {
+  rpc GetItems(GetItemsRequest) returns (GetItemsResponse) {}
+  rpc AddToCart(AddToCartRequest) returns (AddToCartResponse) {}
+  rpc RemoveFromCart(RemoveFromCartRequest) returns (RemoveFromCartResponse) {}
+  rpc UpdateCart(UpdateCartRequest) returns (UpdateCartResponse) {}
+  rpc GetCart(GetCartRequest) returns (GetCartResponse) {}
+  rpc Checkout(CheckoutRequest) returns (CheckoutResponse) {}
+  rpc Reorder(ReorderRequest) returns (ReorderResponse) {}
+  rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse) {}
+    rpc ViewCart(ViewCartRequest) returns (ViewCartResponse) {}
+}
