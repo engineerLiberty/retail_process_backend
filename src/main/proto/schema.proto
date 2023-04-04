@@ -107,5 +107,5 @@ service InventoryService {
   rpc Checkout(CheckoutRequest) returns (CheckoutResponse) {}
   rpc Reorder(ReorderRequest) returns (ReorderResponse) {}
   rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse) {}
-    rpc ViewCart(ViewCartRequest) returns (ViewCartResponse) {}
+  rpc ViewCart(ViewCartRequest) returns (ViewCartResponse) {}
 }
