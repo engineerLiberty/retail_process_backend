@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -16,6 +18,6 @@ public class User {
     private Long Id;
     private String firstname;
     private String lastname;
-    private String email;
+    private String username;
     private String password;
 }
