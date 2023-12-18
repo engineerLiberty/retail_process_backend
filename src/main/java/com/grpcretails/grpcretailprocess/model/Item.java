@@ -1,16 +1,15 @@
 package com.grpcretails.grpcretailprocess.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
 @Entity
-@RequiredArgsConstructor
+//@Builder
+@NoArgsConstructor
 @Table(name = "items")
 public class Item {
         @Id
